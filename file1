@@ -1,0 +1,13 @@
+import telebot
+
+bot = telebot.TeleBot("6144276974:AAGMT8SnDRpLEhybtzJp_tfZBxJbOdTwLns")
+
+@bot.message_handler(commands=['start'])
+def start_message(message):
+    bot.send_message(chat_id=message.chat.id, text='Привет, я бот!')
+
+@bot.message_handler(content_types=['text'])
+def send_text(message):
+    bot.send_message(chat_id=message.chat.id, text=message.text)
+
+bot.polling()
